@@ -3,10 +3,9 @@ import numpy as np
 from matplotlib import pyplot as plt
 from tensorflow.keras import models
 import keras.backend as K
-from error import err
+from postprocessing.error import err
 
 
-rank= [1,2,3,4,5]
 model_name = "AE_ld5"
 model_save_name = "AE_ld5"
 model_decoder_dir = "../models/de_{}.h5".format(model_name)
@@ -59,6 +58,6 @@ plt.imshow(u_p[0, :, :])
 #%%
 plt.figure()
 plt.imshow(modes[0, :, :])
-np.savez_compressed("./pred_data/"+model_save_name+".npz", u_p = u_p, modes = modes, c = z)
+np.savez_compressed("/postprocessing/pred_data/"+model_save_name+".npz", u_p = u_p, modes = modes, c = z)
 plt.show()
 # %%

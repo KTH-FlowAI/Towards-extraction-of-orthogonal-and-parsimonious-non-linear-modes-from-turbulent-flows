@@ -1,15 +1,11 @@
 #%%
 import numpy as np
-from scipy.io import loadmat
 import tensorflow as tf
 from tensorflow.keras import layers, models, optimizers, losses
 from tensorflow.keras import backend as K
+from config.train_config import config
 from scipy.io import savemat
-import h5py
-import mat73
-
 from matplotlib import pyplot as plt
-#%%
 
 dirc = 'data/'
 
@@ -18,14 +14,14 @@ d = np.load(dirc + 'U_train.npz')
 u = d["U"]
 u = np.concatenate((u,u[0:1,:,:]),axis=0)
 u = u[:,:96,4:196]
-#%%
-
 u_mean = u.mean(axis = 0)
 u -= u_mean
 u = np.expand_dims(u,-1)
 print(u.shape)
 nt, nx, ny, nv = u.shape
 
+
+# Shuffle and Split train & validation dataset
 ind_val = np.zeros(nt, dtype = bool)
 n_val = int(nt * 0.2)
 ind_val[:n_val] = True
@@ -37,8 +33,8 @@ u_tst = u[ind_val]
 
 print(u_trn.shape)
 print(u_tst.shape)
-latent_dim = 5
-beta = 1e-3
+latent_dim = config.latent_dim
+beta = config.beta
 
 name = f'VAE_ld{latent_dim}_b{beta}'
 model_name = f'_{name}.h5'
@@ -49,10 +45,10 @@ def sampling(args):
                               mean=0., stddev=1.0)
     return z_mean + K.exp(z_log_sigma) * epsilon
 
-act = 'tanh'
-fs = (3, 3)
-ffs = (2, 2)
-st = (1, 1)
+act = config.act
+fs = config.knsize
+ffs = config.poolsize
+st = config.strides
 inp = layers.Input(shape = (nx, ny, nv))
 x = layers.Conv2D(16, fs, activation = act, strides = st, padding='same')(inp)
 x = layers.MaxPooling2D(ffs, padding = 'same')(x)
@@ -113,30 +109,11 @@ lr = optimizers.schedules.PiecewiseConstantDecay(boundaries, values)
 
 opt = optimizers.Adam(learning_rate = lr(step))
 model.compile(optimizer = opt, loss = 'mse')
+
+Epoch = config.epochs
 # If unspecified, batch_size will default to 32
-hist = model.fit(u_trn, u_trn, epochs = 800, validation_data = (u_tst, u_tst), verbose = 2,batch_size = 16)
+hist = model.fit(u_trn, u_trn, epochs = Epoch, validation_data = (u_tst, u_tst), verbose = 2,batch_size = 16)
 savemat(wdir + f'loss_{name}.mat', hist.history)
 
 encoder.save(wdir + 'en' + model_name)
 decoder.save(wdir + 'de' + model_name)
-
-u_p = model.predict(u)
-plt.imshow(u[0, :, :, 0])
-plt.figure()
-plt.imshow(u_p[0, :, :, 0])
-
-c = encoder.predict(u)
-
-plt.figure()
-coef = np.abs(np.corrcoef(c[0].T))
-plt.imshow(coef, cmap = 'RdBu_r', vmin = 0, vmax = 1)
-
-cm = np.diag(np.ones((latent_dim,)))
-modes = decoder.predict(cm)
-
-for n in range(latent_dim):
-  plt.figure()
-  plt.imshow(modes[n, :, :, 0], cmap = 'RdBu')
-
-plt.plot(c[0])
-

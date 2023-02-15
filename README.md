@@ -29,7 +29,7 @@ Prediction can be performed as follows:
 We offer models with pre-trained parameters in **/model** folder. The models are saved as format of *.h5* file and name as ***(encoder/decoder) _ (model type) _ (latent dim) _ (beta value).h5***
 
 ## Post-processing
-The code in **/postprocessing** can be used for evaluating results and plot figures.
+**/postprocessing**: Codes can be used for evaluating results and plot figures.
 
 **/postprocessing/fig**: Store the figures plotted by script.
 

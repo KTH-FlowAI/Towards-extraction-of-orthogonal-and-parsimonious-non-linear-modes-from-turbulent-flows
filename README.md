@@ -11,9 +11,11 @@ The code was run successfully using Tensorflow>=2.6.0, using 1 GPU for training
 The dataset used for training and testing are available in **data** folder in order to ensure the reproducibility of the results. Please, get in touch using the email address for correspondance in the paper to arrange the transfer
 
 ## Training and inference
+The $\beta$-VAEs training can be performed after cloning the repository 
 
-
-
+    git clone https://github.com/Fantasy98 Towards-extraction-of-orthogonal-and-parsimonious-non-linear-modes-from-turbulent-flows.git
+    cd src
+    python train_cnn_vae.py
 
 
 

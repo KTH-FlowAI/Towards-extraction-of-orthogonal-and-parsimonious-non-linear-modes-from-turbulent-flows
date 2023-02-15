@@ -17,6 +17,6 @@ The $\beta$-VAEs training can be performed after cloning the repository
     cd src
     python train_cnn_vae.py
 
-All the training parameters are defined in the [train config](https://github.com/Fantasy98/Towards-extraction-of-orthogonal-and-parsimonious-non-linear-modes-from-turbulent-flows.git/config/train_config.py) 
+All the training parameters are defined in the [train config](https://github.com/Fantasy98/Towards-extraction-of-orthogonal-and-parsimonious-non-linear-modes-from-turbulent-flows/blob/02a7183a0ea014f6d1901f47b883f1f7f6949db1/config/train_config.py) 
 
 

@@ -26,4 +26,4 @@ Prediction can be performed as follows:
     python prediction.py
 
 ## Pre-trained models
-We offer models with pre-trained parameters in **model** folder. The models are saved as format of *.h5* file and name as *(encoder/decoder)_(model type)_(latent dim)_(beta value).h5*
+We offer models with pre-trained parameters in **model** folder. The models are saved as format of *.h5* file and name as ***(encoder/decoder)_(model type)_(latent dim)_(beta value).h5***

@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from tensorflow.keras import models
 import keras.backend as K
 from postprocessing.error import err
-
+from config.train_config import config
 
 model_name = "AE_ld5"
 model_save_name = "AE_ld5"
@@ -12,7 +12,7 @@ model_decoder_dir = "../models/de_{}.h5".format(model_name)
 model_encoder_dir = "../models/en_{}.h5".format(model_name)
 #%%
 
-latent_dim = 5
+latent_dim = config.latent_dim
 def sampling(args):
     z_mean, z_log_sigma = args
     epsilon = K.random_normal(shape=(K.shape(z_mean)[0], latent_dim),

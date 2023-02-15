@@ -8,7 +8,8 @@ The code in this repository features a Python implemention of $\beta$-variationa
 The code was run successfully using Tensorflow>=2.6.0, using 1 GPU for training 
 
 ## Data
-The dataset used for training and testing are available [data description](https://github.com/Fantasy98/Towards-extraction-of-orthogonal-and-parsimonious-non-linear-modes-from-turbulent-flows/blob/e7dfab3f45e3c6929167a6cc66ffee6606ef559b/data/readme.md) folder in order to ensure the reproducibility of the results. Please, get in touch using the email address for correspondance in the paper to arrange the transfer
+The dataset used for training and testing are available in order to ensure the reproducibility of the results. Please, get in touch using the email address for correspondance in the paper to arrange the transfer. 
+For details of data, please read[data description](https://github.com/Fantasy98/Towards-extraction-of-orthogonal-and-parsimonious-non-linear-modes-from-turbulent-flows/blob/e7dfab3f45e3c6929167a6cc66ffee6606ef559b/data/readme.md) folder 
 
 ## Training and inference
 The $\beta$-VAEs training can be performed after cloning the repository 

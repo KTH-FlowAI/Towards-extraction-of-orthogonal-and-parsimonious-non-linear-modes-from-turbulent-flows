@@ -5,13 +5,13 @@ from tensorflow.keras import backend as K
 from error import err
 
 
-plt.rc('text', usetex = True)
-plt.rc('font', family = 'serif')
-plt.rc('axes', labelsize = 16, linewidth = 1.5)
-plt.rc('font', size = 14)
-plt.rc('legend', fontsize = 12, handletextpad=0.3)              
-plt.rc('xtick', labelsize = 14)             
-plt.rc('ytick', labelsize = 14)
+"""
+Ranking the modes of autoencoder  according to the energy percentage E_k of reconstruction by each mode
+It corresponds to the Algorithm 2 in paper 
+
+Return:
+     .txt file which saves the rank of modes 
+"""
 
 
 latent_dim =5

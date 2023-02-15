@@ -4,7 +4,15 @@ import matplotlib.pyplot as plt
 import tensorflow as tf 
 from tensorflow import keras
 from tensorflow.keras import models
-#%%
+
+"""
+Implement Propal Orthogonal Decomposition (POD) towards the dataset
+
+Return:
+    .npz file which saves N modes and construction data via these modes
+"""
+
+
 d = np.load("../data/U_train.npz")
 u = d["U"]
 u = u -u.mean(0)

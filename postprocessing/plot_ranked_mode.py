@@ -1,10 +1,14 @@
 import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
-from scipy.ndimage import gaussian_filter as gf
-import cmocean.cm as cmo
 
-# plt.rc('text', usetex = True)
+"""
+Plot the ranked first 5 modes for Beta-VAE, AE, HAE and POD
+
+Return:
+    .png file
+"""
+
 plt.rc('font', family = 'serif')
 plt.rc('axes', labelsize = 16, linewidth = 2)
 plt.rc('font', size = 14)

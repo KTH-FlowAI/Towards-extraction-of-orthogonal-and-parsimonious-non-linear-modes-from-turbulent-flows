@@ -1,11 +1,17 @@
 import numpy as np
-
 from matplotlib import pyplot as plt
 from error import err
 import seaborn as sns
 cmp = sns.color_palette('YlGnBu_r', as_cmap=True)
 plt.set_cmap(cmp)
+"""
+Plot one flow fleid snapshot for Beta-VAE, AE, HAE, POD and reference. 
 
+The energy percentage E_k have been annotated for 4 methods respectively
+
+Return:
+    A .png file 
+"""
 
 d = np.load("../data/U_train.npz")
 u = d['U']

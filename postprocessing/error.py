@@ -1,5 +1,7 @@
 import numpy as np
-
+"""
+Error metrics to assess the results
+"""
 def err_norm(u, u_p):
     err = np.linalg.norm(u - u_p, axis = (1, 2))**2/np.linalg.norm(u, axis = (1, 2))**2
     return 1 - err.mean(axis = 0)

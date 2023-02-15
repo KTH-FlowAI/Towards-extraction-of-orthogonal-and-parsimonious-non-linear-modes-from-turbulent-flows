@@ -3,7 +3,13 @@ from mat73 import loadmat
 from matplotlib import pyplot as plt
 from error import err
 
-# plt.rc('text', usetex = True)
+"""
+Plot flow fleids at 4 different time step for Beta-VAE, AE, HAE, POD and reference
+
+Return:
+    A .pdf file 
+"""
+
 plt.rc('font', family = 'serif')
 plt.rc('axes', labelsize = 16, linewidth = 1)
 plt.rc('font', size = 14)

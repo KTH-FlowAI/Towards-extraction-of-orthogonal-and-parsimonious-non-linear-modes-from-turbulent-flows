@@ -1,14 +1,16 @@
 #%%
 import numpy as np
 from matplotlib import pyplot as plt
-from error import err
-from scipy.io import loadmat
-import cmocean.cm as cmo
 import seaborn as sns
 
-from mpl_toolkits.axes_grid1 import make_axes_locatable
+"""
+Plot the correlatin matrix for Beta-VAE, AE, HAE and POD
+
+Return:
+    .png file
+"""
+
 #%%
-# plt.rc('text', usetex = True)
 plt.rc('font', family = 'serif')
 plt.rc('axes', labelsize = 16, linewidth = 1)
 plt.rc('font', size = 14)

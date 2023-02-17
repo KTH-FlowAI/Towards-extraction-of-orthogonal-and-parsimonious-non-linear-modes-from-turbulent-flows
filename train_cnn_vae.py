@@ -12,7 +12,7 @@ dirc = 'data/'
 wdir ="models/" # path to save model
 d = np.load(dirc + 'U_train.npz')
 u = d["U"]
-u = np.concatenate((u,u[0:1,:,:]),axis=0)
+
 u = u[:,:96,4:196]
 u_mean = u.mean(axis = 0)
 u -= u_mean

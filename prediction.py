@@ -53,8 +53,9 @@ if model_name[0] == "A":
     u_p = model.predict(u)
 elif model_name[0] == "V":
     z = encoder.predict(u)
-    z = sampling([z[0],z[1]])
-    u_p = decoder(z)
+    z_ = sampling([z[0],z[1]])
+    z  = z[0]
+    u_p = decoder(z_)
 #%%
 modes = decoder.predict(np.diag(np.ones(latent_dim))).squeeze()
 e = err(u, u_p)
